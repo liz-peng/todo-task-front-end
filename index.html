@@ -48,7 +48,7 @@
 							</div>
 						</div>
 						<div class="ui segment">
-							<form class="ui form">
+							<form class="ui form" v-on:submit="updateTask($event, task.id)">
 								<input type="hidden" name="id" v-model="task.id" />
 								<div class="field">
 									<label>Name</label>
@@ -62,7 +62,7 @@
 									<label>Completed</label>
 									<input type="checkbox" name="completed" v-model="task.completed">
 								</div>
-								<button class="ui button green" type="submit">Update</button>
+								<button class="ui button green" type="submit" v-on:click="updateTask($event, task.id)">Update</button>
 							</form>
 						</div>
 					</div>
