@@ -38,6 +38,10 @@ let app = new Vue({
 		},
 		completedTasks: function() {
 			return this.tasks.filter(item => item.completed == true);
+		},
+		nextId: function() {
+			return (this.tasks.sort(function(a, b){ return a.id-b.id; }))
+			[this.tasks.length-1].id+1;
 		}
 	},
 	methods: {
@@ -53,13 +57,27 @@ let app = new Vue({
 				task.completed = !task.completed;
 			}
 		},
+		createTask: function(event) {
+			event.preventDefault();
+			if(!this.task.completed) {
+				this.task.completed = false;
+			}
+			else {
+				this.task.completed = true;
+			}
+			let taskId = this.nextId;
+			this.task.id = taskId;
+			let newTask = Object.assign({}, this.task);
+			this.tasks.push(newTask);
+			this.clear();
+		},
 		editTask: function(event, id) {
 			event.stopImmediatePropagation();
 			this.action = 'edit';
 			let task = this.tasks.find(item => item.id == id);
 			if(task) {
 				this.task = {
-					id: task.id,
+					id: id,
 					name: task.name,
 					description: task.description,
 					completed: task.completed
