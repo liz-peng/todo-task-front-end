@@ -2,6 +2,10 @@
 	padding-top: 2em;
 }
 
+.task.done label{
+	text-decoration: line-through;
+}
+
 .task.todo {
 	background-color: lightyellow;
 }
