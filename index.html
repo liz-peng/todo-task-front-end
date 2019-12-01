@@ -41,10 +41,13 @@
 				<div class="six wide column">
 					<div id="editor" class="details ui raise segment purple">
 						<div class="ui header grid">
-							<div class="left nine wide column">
+							<div class="left floated nine wide column">
 								<i class="icon edit violet"></i>Details
 							</div>
-							<div class="right float five wide column">
+							<div class="right floated five wide column">
+								<button class="ui green button right float" v-on:click="clear">
+									<i class="icon plus circle"></i>New
+								</button>
 							</div>
 						</div>
 						<div class="ui segment">
@@ -62,7 +65,8 @@
 									<label>Completed</label>
 									<input type="checkbox" name="completed" v-model="task.completed">
 								</div>
-								<button class="ui button green" type="submit" v-on:click="updateTask($event, task.id)">Update</button>
+								<button class="ui button green" type="submit" v-if="action=='create'" v-on:click="createTask($event, task.id)">Create</button>
+								<button class="ui button green" type="submit" v-if="action=='edit'" v-on:click="updateTask($event, task.id)">Update</button>
 							</form>
 						</div>
 					</div>

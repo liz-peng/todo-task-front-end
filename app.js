@@ -29,7 +29,8 @@ let app = new Vue({
 			{ id: 4, name: 'Todo 4', description: 'This is a todo', completed: true }
 		],
 		task: {},
-		message: ''
+		message: '',
+		action: 'create'
 	},
 	computed: {
 		todoTasks: function() {
@@ -40,6 +41,10 @@ let app = new Vue({
 		}
 	},
 	methods: {
+		clear: function() {
+			this.task = {};
+			this.action = 'create';
+		},
 		toggleDone: function(event, id) {
 			event.stopImmediatePropagation();
 			event.preventDefault();
@@ -49,6 +54,8 @@ let app = new Vue({
 			}
 		},
 		editTask: function(event, id) {
+			event.stopImmediatePropagation();
+			this.action = 'edit';
 			let task = this.tasks.find(item => item.id == id);
 			if(task) {
 				this.task = {
