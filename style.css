@@ -1,20 +1,37 @@
+h1 {
+	padding-top: 2em;
+}
+
 .tasklist {
 	padding-top: 2em;
 }
 
-.task.done label{
+.todo label {
+	padding-left: 0.5em;
+}
+
+.done label{
+	padding-left: 0.5em;
 	text-decoration: line-through;
 }
 
-.task.todo {
+/*.cards.todo > .card > .content  {
 	background-color: lightyellow;
 }
 
-.task.done {
+.cards.done > .card > .content {
 	background-color:  lightgreen;
-}
+}*/
 
 .description {
 	color:grey;
 	font-style: italic;
+}
+
+.cards {
+	padding: 1em 1em;
+}
+
+.editor {
+	padding-top: 10em !important;
 }
